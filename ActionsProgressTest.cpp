@@ -74,26 +74,87 @@ void SpriteDemo::onEnter()
 //------------------------------------------------------------------
 void SpriteProgressToRadial::onEnter()
 {
-	
+		int i =200;
+		int y;
+		int k = 1;
+		int z;
+
 		SpriteDemo::onEnter();
+
 		auto s = Director::getInstance()->getWinSize();
-		auto to1 = Sequence::createWithTwoActions(ProgressTo::create(2, 100), ProgressTo::create(0, 0));
+		
+		
+	
+			
+	  while (i>0) {
+			
+		  z = i % 2;
 
-		auto left = ProgressTimer::create(Sprite::create(s_pathSister1));
-		left->setType(ProgressTimer::Type::RADIAL);
-		addChild(left);
-		left->setPosition(200, s.height / 2);
-		left->runAction(RepeatForever::create(to1));
+			SpriteDemo::onEnter();
 
-		auto to2 = Sequence::createWithTwoActions(ProgressTo::create(2, 100), ProgressTo::create(0, 0));
+			auto s = Director::getInstance()->getWinSize();
 
-		auto right = ProgressTimer::create(Sprite::create(s_pathDancer));
-		right->setType(ProgressTimer::Type::RADIAL);
-		// Makes the ridial CCW
-		addChild(right);
-		right->setReverseDirection(true);
-		right->setPosition(s.width - 100, s.height / 2);
-		right->runAction(RepeatForever::create(to2));
+			if (z == 0)
+			{
+				y = 2;
+				auto to1 = Sequence::createWithTwoActions(ProgressTo::create(y, 100), ProgressTo::create(0, 0));
+
+				auto left = ProgressTimer::create(Sprite::create(s_pathSister1));
+				left->setType(ProgressTimer::Type::RADIAL);
+				addChild(left);
+				left->setPosition(200, s.height / 2);
+				left->runAction(RepeatForever::create(to1));
+
+			}
+			else
+			{
+				y = 1;
+
+				auto to1 = Sequence::createWithTwoActions(ProgressTo::create(y, 100), ProgressTo::create(0, 0));
+				auto left = ProgressTimer::create(Sprite::create(s_pathSister1));
+				left->setType(ProgressTimer::Type::RADIAL);
+				addChild(left);
+				left->setPosition(200, s.height / 2);
+				left->runAction(RepeatForever::create(to1));
+
+			}
+			int l;
+			l = k % 10;
+
+			//SpriteDemo::onEnter();
+
+			//auto s = Director::getInstance()->getWinSize();
+			if (l == 0)
+			{
+				auto to2 = Sequence::createWithTwoActions(ProgressTo::create(10, 100), ProgressTo::create(0, 0));
+				auto right = ProgressTimer::create(Sprite::create(s_pathDancer));
+				right->setType(ProgressTimer::Type::RADIAL);
+				addChild(right);
+				right->setReverseDirection(true);
+				right->setPosition(s.width - 100, s.height / 2);
+				right->runAction(RepeatForever::create(to2));
+
+			}
+			else
+			{
+				auto to2 = Sequence::createWithTwoActions(ProgressTo::create(l, 100), ProgressTo::create(0, 0));
+				auto right = ProgressTimer::create(Sprite::create(s_pathDancer));
+				right->setType(ProgressTimer::Type::RADIAL);
+				addChild(right);
+				right->setReverseDirection(true);
+				right->setPosition(s.width - 100, s.height / 2);
+				right->runAction(RepeatForever::create(to2));
+			}
+
+			k++;
+			i--;
+
+
+		}
+
+		//auto to1 = Sequence::createWithTwoActions(ProgressTo::create(y, 100), ProgressTo::create(0, 0));
+		
+		
 
 	
 }
